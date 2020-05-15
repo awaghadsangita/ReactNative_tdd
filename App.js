@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+export default class App extends React.Component {
+render(){
   return (
     <View style={styles.container}>
-      <Text>HHello, world!</Text>
+      <Text>Hello, world!</Text>
     </View>
   );
+}  
 }
 
 const styles = StyleSheet.create({
