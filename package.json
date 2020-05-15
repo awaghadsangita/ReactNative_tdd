@@ -19,6 +19,7 @@
     "@babel/core": "^7.8.6",
     "@jonny/react-native-mock": "^0.4.2",
     "babel-preset-expo": "~8.1.0",
+    "detox": "^16.5.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest-expo": "^37.0.0"
@@ -29,5 +30,8 @@
       "./tests/setup.js"
     ]
   },
-  "private": true
+  "private": true,
+  "detox": {
+    "test-runner": "jest"
+  }
 }
