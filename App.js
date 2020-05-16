@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 export default class App extends React.Component {
   constructor(){
@@ -13,18 +13,20 @@ export default class App extends React.Component {
   }
   render(){
   return (
-    <View style={styles.container}>
-      <Text>Hello, world!</Text>
+    <View style={{flex:1,justifyContent:'center'}}>
+        <TextInput
+        testID={'username'}
+        onChangeText={(text)=>this.change(text)}
+        style={{backgroundColor:'gray',marginBottom:15}}
+        placeholder="Enter Username"/>
+     
+        <TextInput
+        testID={'password'}
+        onChangeText={(text)=>this.change(text)}
+        style={{backgroundColor:'gray',marginBottom:15}}
+        placeholder="Enter Password"/>
+     
     </View>
   );
 }  
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
