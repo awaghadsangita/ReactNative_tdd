@@ -1,18 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Text snapshottesting 1`] = `
+exports[`Text Snapshot Testing 1`] = `
 <View
   style={
     Object {
-      "alignItems": "center",
-      "backgroundColor": "#fff",
       "flex": 1,
       "justifyContent": "center",
     }
   }
 >
-  <Text>
-    Hello, world!
-  </Text>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    placeholder="Enter Username"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "backgroundColor": "gray",
+        "marginBottom": 15,
+      }
+    }
+    testID="username"
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    placeholder="Enter Password"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "backgroundColor": "gray",
+        "marginBottom": 15,
+      }
+    }
+    testID="password"
+    underlineColorAndroid="transparent"
+  />
 </View>
 `;

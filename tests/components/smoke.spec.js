@@ -8,7 +8,8 @@ describe('Text', () => {
         const wrapper = shallow(<Text>Hello, world!</Text>);
         expect(wrapper.text()).toEqual('Hello, world!');
    });
-   it('snapshottesting',()=>{
+
+   it('Snapshot Testing',()=>{
        const snap=renderer.create(<App/>).toJSON();
        expect(snap).toMatchSnapshot();
    })
