@@ -1,40 +1,30 @@
 import React from 'react';
-import { View, StyleSheet,Button,Text } from 'react-native';
+import { View, StyleSheet,Button,Text,TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
   render() {
+    let rows=[]
+    let numbers=[[1,2,3],[4,5,6],[7,8,9],[0,".","="]]
+    for(let i=0;i<4;i++){
+        let row=[]
+      for(let j=0;j<4;j++){
+        row.push(<TouchableOpacity style={styles.btn}><Text style={styles.btnText}>{numbers[i][j]}</Text></TouchableOpacity>)
+      }
+      rows.push(<View style={styles.row}>{row}</View>)
+    }
     return (
       <View style={styles.container}>
         <View style={styles.result}><Text style={styles.resultText}>11*11</Text></View>
         <View style={styles.calculation}><Text style={styles.calculationText}>121</Text></View>
         <View style={styles.button}>
           <View style={styles.numbers}>
-            <View style={styles.row}>
-              <Button title="0"/>
-              <Button title="0"/>
-              <Button title="0"/>
-            </View>
-            <View style={styles.row}>
-              <Button title="0"/>
-              <Button title="0"/>
-              <Button title="0"/>
-            </View>
-            <View style={styles.row}>
-              <Button title="0"/>
-              <Button title="0"/>
-              <Button title="0"/>
-            </View>
-            <View style={styles.row}>
-              <Button title="0"/>
-              <Button title="0"/>
-              <Button title="0"/>
-            </View>
+            {rows}
           </View>
           <View style={styles.operations}>
-              <Button title="0"/>
-              <Button title="0"/>
-              <Button title="0"/>
-              <Button title="0"/>
+              <Button title="/"/>
+              <Button title="*"/>
+              <Button title="-"/>    
+              <Button title="+"/>    
           </View>
         </View>
       </View>
@@ -50,7 +40,16 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     flex:1,
     justifyContent:"space-around",
-    alignItems:"stretch",  
+    alignItems:"stretch",
+     
+  },
+  btn:{
+    justifyContent:"center",
+    alignItems:"stretch",
+    alignSelf:"stretch",
+  },
+  btnText:{
+    fontSize:30
   },
   result: {
     flex: 2,
@@ -85,4 +84,3 @@ const styles = StyleSheet.create({
     backgroundColor:"black"
   }  
 });
-
