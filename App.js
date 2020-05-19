@@ -1,32 +1,36 @@
-import React from 'react';
-import { TextInput, View } from 'react-native';
+import React  from 'react';
+import { Text, View,StyleSheet } from 'react-native';
 
-export default class App extends React.Component {
-  constructor(){
-    super();
-    this.state={
-      data:"test",
-    }
-  }
-  change(x){
-    this.setState({data:x*10});
-  }
+export default class App extends React.Component {  
   render(){
   return (
-    <View style={{flex:1,justifyContent:'center'}}>
-        <TextInput
-        testID={'username'}
-        onChangeText={(text)=>this.change(text)}
-        style={{backgroundColor:'gray',marginBottom:15}}
-        placeholder="Enter Username"/>
-     
-        <TextInput
-        testID={'password'}
-        onChangeText={(text)=>this.change(text)}
-        style={{backgroundColor:'gray',marginBottom:15}}
-        placeholder="Enter Password"/>
-     
+    <View style={styles.container}>
+      <View style={styles.result}>
+        <Text style={styles.resultText}>01</Text>
+      </View>
+      <View style={styles.keypad}></View>
+      
     </View>
-  );
+    );
 }  
 }
+const styles= StyleSheet.create({
+    container:{
+      flex:1,
+      paddingTop:40
+    },
+    result:{
+      flex:2,
+      backgroundColor:"black"
+    },
+    keypad:{
+      flex:4,
+      backgroundColor:"gray"  
+    },
+    resultText:{
+     fontSize:48,
+     color:"white",
+     paddingTop:75,
+     textAlign:"right"
+     }
+     })
