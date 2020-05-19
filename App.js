@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet,Text,TouchableOpacity } from 'react-native';
+import { View, StyleSheet,Button,Text,TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
   constructor(){
@@ -12,11 +12,22 @@ export default class App extends React.Component {
   }
   pressButton(text){
     if(text=="="){
-        return this.calculatResult();
+        return this.validate() && this.calculatResult();
     }
     this.setState({
       resultText1:this.state.resultText1+text
     })
+  }
+  validate(){
+    let text=this.state.resultText1;
+    switch(text.slice(-1)){
+      case "-":
+      case "+":
+      case "/":
+      case "*":
+        return false;
+    }
+    return true;
   }
   calculatResult(){
     this.setState({calculationResult:eval(this.state.resultText1)})
