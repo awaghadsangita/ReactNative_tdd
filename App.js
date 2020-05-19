@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, StyleSheet,Button,Text,TouchableOpacity } from 'react-native';
+import { View, StyleSheet,Text,TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
   constructor(){
     super()
     this.state={
-      resultText1:""
+      resultText1:"",
+      calculationResult:""
     }
     this.operation=["D","/","*","-","+"]
   }
@@ -18,7 +19,7 @@ export default class App extends React.Component {
     })
   }
   calculatResult(){
-
+    this.setState({calculationResult:eval(this.state.resultText1)})
   }
   operations(operation){
     switch(operation){
@@ -68,7 +69,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.result}><Text style={styles.resultText}>{this.state.resultText1}</Text></View>
-        <View style={styles.calculation}><Text style={styles.calculationText}>121</Text></View>
+        <View style={styles.calculation}><Text style={styles.calculationText}>{this.state.calculationResult}</Text></View>
         <View style={styles.button}>
           <View style={styles.numbers}>
             {rows}
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
   },
   calculationText:{
     fontSize:40,
-    color:"gray",
+    color:"gray", 
     textAlign:"right"
   },
   button:{
