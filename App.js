@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet,Text,TouchableOpacity } from 'react-native';
+import { View, StyleSheet,Button,Text,TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
   constructor(){
@@ -7,6 +7,7 @@ export default class App extends React.Component {
     this.state={
       resultText1:""
     }
+    this.operation=["D","/","*","-","+"]
   }
   pressButton(text){
     if(text=="="){
@@ -19,12 +20,25 @@ export default class App extends React.Component {
   calculatResult(){
 
   }
-  operation(operation){
+  operations(operation){
     switch(operation){
       case 'D':{
-          let text=this.state.resultText1.split('');
-          text.pop();
-          this.setState({resultText1:text.join('')})
+            let text=this.state.resultText1.split('');
+            text.pop();
+            this.setState({resultText1:text.join('')})
+      }
+          break;
+      
+      case '/':
+      case '*':
+      case '-':
+      case '+':
+      {
+            let lastChar=this.state.resultText1.split('').pop()
+            if(this.operation.indexOf(lastChar)>0 ||this.state.resultText1=="") return
+            this.setState({
+              resultText1:this.state.resultText1+operation
+            })
       }
     }
   }
@@ -35,20 +49,20 @@ export default class App extends React.Component {
         let row=[]
       for(let j=0;j<4;j++){
         row.push(<TouchableOpacity 
-                  onPress={()=>this.buttonPress(numbers[i][j])}
+                  onPress={()=>this.pressButton(numbers[i][j])}
                   style={styles.btn}>
               <Text style={styles.btnText}>{numbers[i][j]}</Text>
             </TouchableOpacity>)
       }
       rows.push(<View style={styles.row}>{row}</View>)
     }
-    let ops=["D","/","*","-","+"];
+    
     let opsColumn=[]
     for(let i=0;i<5;i++){
       opsColumn.push(<TouchableOpacity
-                        onPress={()=>this.operation(ops[i])} 
+                        onPress={()=>this.operations(this.operation[i])} 
                         style={styles.btn}>
-                        <Text style={styles.white}>{ops[i]}</Text>
+                        <Text style={styles.white}>{this.operation[i]}</Text>
                     </TouchableOpacity>)
     }
     return (
