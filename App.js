@@ -12,6 +12,11 @@ export default class App extends React.Component {
       }
       rows.push(<View style={styles.row}>{row}</View>)
     }
+    let ops=["/","*","-","+"];
+    let opsColumn=[]
+    for(let i=0;i<4;i++){
+      opsColumn.push(<TouchableOpacity style={styles.btn}><Text style={styles.white}>{ops[i]}</Text></TouchableOpacity>)
+    }
     return (
       <View style={styles.container}>
         <View style={styles.result}><Text style={styles.resultText}>11*11</Text></View>
@@ -21,10 +26,7 @@ export default class App extends React.Component {
             {rows}
           </View>
           <View style={styles.operations}>
-              <Button title="/"/>
-              <Button title="*"/>
-              <Button title="-"/>    
-              <Button title="+"/>    
+              {opsColumn}
           </View>
         </View>
       </View>
@@ -48,8 +50,15 @@ const styles = StyleSheet.create({
     alignItems:"stretch",
     alignSelf:"stretch",
   },
+  white:{
+    color:"white",
+    fontSize:30,
+    paddingLeft:35
+
+  },
   btnText:{
-    fontSize:30
+    fontSize:30,
+    textAlign:"center"
   },
   result: {
     flex: 2,
